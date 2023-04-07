@@ -1,10 +1,19 @@
 import os
 from collections import defaultdict
 from os.path import dirname, abspath
+
 def eucleudianDistance(nodeAwal, nodeAkhir, coordinateDictionary):
     distance = round(((coordinateDictionary[nodeAwal]["lat"] - coordinateDictionary[nodeAkhir]["lat"]) ** 2 
     + (coordinateDictionary[nodeAwal]["long"] - coordinateDictionary[nodeAkhir]["long"]) ** 2) ** (0.5), 3)
     return distance
+
+def makeHeuristicDict(goal):
+    loadDictionary = readFile(namaFile)
+    heuristicValue = dict()
+    for nodes in loadDictionary:
+        heuristicValue[nodes] = eucleudianDistance(nodes, goal)
+    return heuristicValue
+
 def readFile(namaFile):
     try:
         # inisialisasi awal 
@@ -13,6 +22,7 @@ def readFile(namaFile):
         # Baca File
         dir = dirname(dirname(abspath(__file__)))
         lokasiFile = os.path.join(dir, 'test\\' + namaFile + '.txt')
+        
         with open(lokasiFile, "r") as f:
             # Mendapatkan list Seluruh Simpul 
             listOfSimpul =  f.readline().replace("\n", "").split(" ")
