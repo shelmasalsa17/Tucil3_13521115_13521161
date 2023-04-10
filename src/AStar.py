@@ -1,60 +1,61 @@
 from helper import *
 
-def makeHeuristicDict(goal, loadDictionary):
-    heuristicValue = dict()
-    for nodes in loadDictionary:
-        heuristicValue[nodes] = eucleudianDistance(nodes, goal,coordinateDictionary)
-    return heuristicValue
+def Astar(start, goal, kamusBeban, kamusKordinat):
+    try:
+        kamusHeuristic = buatkamusHeuristic(goal, kamusKordinat, kamusBeban)
+        cost = {start: 0}
 
-#Pencarian dengan algoritma A*
-def A_star(loadDictionary, start, goal):
-    # inisialisasi variabel
-    heuristicValue = makeHeuristicDict(goal,loadDictionary)
-    weight = {start: 0}
-    simpulnotVisited = []
-    visited = []
-    curr = start
-    simpulnotVisited.append([curr, weight[curr]])
-    isTrue = True
+        # OPEN SET
+        opened = []
+        # CLOSE SET
+        closed = []
+        # CURRENT PLACE
+        current = start
+        # ADD CURRENT TO OPEN 
+        opened.append([current, kamusHeuristic[current]])
+        while True:
+            current = min(opened, key=lambda x: x[1])
+            node_dikunjungi = current[0]
+            closed.append(current)
+            opened.remove(current)
 
-    # algoritma A*
-    while isTrue:
-        curr = min(simpulnotVisited, key=lambda x: x[1])
-        hasVisited = curr[0]
-        print(curr)
-        visited.append(curr)
-        simpulnotVisited.remove(curr)
-        if visited[-1][0] == goal:
-            isTrue = False
-            #Mengecek apakah simpul sudah dikunjungi, jika sudah akan dilewat
-        for i in loadDictionary[hasVisited].items():
-            if i[0] in [j[0] for j in visited]:
-                continue
-            weight.update({i[0]: weight[hasVisited] + i[1]})
-            weight[i[0]] = weight[hasVisited] + heuristicValue[i[0]] + i[1]
-            simpulnotVisited.append([i[0], weight[i[0]]])
+            if (closed[-1][0] == goal):
+                break
+            for anak in kamusBeban[node_dikunjungi].items():
+                if anak[0] in [closed_nodes[0] for closed_nodes in closed]:
+                    continue
+                cost.update({anak[0]: cost[node_dikunjungi] + anak[1]})
+                current_fval = cost[node_dikunjungi] + kamusHeuristic[anak[0]] + anak[1]
+                temp = [anak[0], current_fval]
+                opened.append(temp)
 
-        # membangun jalur terpendek
-        shortPath = []
-        lastPath = goal
-        shortPath.append(goal)
-        
-        for i in range(len(visited) - 2, -1, -1):
-            check = visited[i][0]
-            if lastPath in [k[0] for k in loadDictionary[check].items()]:
-                if weight[check] + loadDictionary[check][lastPath] == weight[lastPath]:
-                    shortPath.append(check)
-                    lastPath = check
-        shortPath.reverse()
-        return shortPath, visited
+        last_node = goal
+        alur_terpendek = []
+        alur_terpendek.append(goal)
 
+        for i in range(len(closed) - 2, -1, -1):
+            check_node = closed[i][0]
+            if last_node in [anak[0] for anak in kamusBeban[check_node].items()]:
+                if (cost[check_node] + kamusBeban[check_node][last_node] == cost[last_node]):
+                    alur_terpendek.append(check_node)
+                    last_node = check_node
+        alur_terpendek.reverse()
+        return alur_terpendek, closed
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+def buatkamusHeuristic(goal, kamusKordinat, kamusBeban):
+    kamusHeuristic = dict()
+    for nodes in kamusBeban:
+        kamusHeuristic[nodes] = eucleudianDistance(nodes, goal, kamusKordinat)
+    return kamusHeuristic
 
 #main ASTAR
 #namaFile = str(input("Nama File tanpa ekstensi: "))
-test = readFile("test/itb.txt")          
-print(test)
-start = str(input("start: "))
-end = str(input("end: "))
-shortPath = A_star(test,start,end)
-print(shortPath)
+#kamusBeban, kamusKordinat = readFile("test/itb.txt")          
+#print(kamusBeban)
+#start = str(input("start: "))
+#end = str(input("end: "))
+#shortPath, visited = Astar(start,end, kamusBeban, kamusKordinat)
+#print(shortPath)
 

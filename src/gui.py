@@ -4,7 +4,6 @@ import networkx
 import matplotlib.pyplot as plt
 from Visualizer import *
 from helper import *
-from helperAstar import *
 from AStar import *
 from pencarian import *
 
@@ -15,7 +14,7 @@ shortPath = []
 # Fungsi untuk membuka jendela dialog dan membaca file
 def open_file_dialog():
     # Membuka jendela dialog untuk memilih file
-    file_path = filedialog.askopenfilename()
+    file_path = filedialog.askopenfilename()     
     if file_path:
         # Jika file dipilih, update teks tombol dengan nama file
         file_name = file_path.split("/")[-1]
@@ -39,17 +38,26 @@ def show_graph():
     except Exception as e:
         shortpath_label.config(text=f"Error: Periksa penulisan Start, goal dan file")
         visited_label.config(text=f"")
-    
+
+    # Update label untuk menampilkan jalur terpendek
+def showASTAR_graph():
+    start = start_entry.get()
+    goal = goal_entry.get()
     try:
-        shortPath, visited = A_star(kamusBeban, start, goal)
-        membuatGraph(start, goal, shortPath, visited,kamusBeban, kamusKoordinat)
+        # Memanggil fungsi Astar untuk mendapatkan jalur terpendek dan node yang dikunjungi
+        shortPath, visited = Astar(start, goal, kamusBeban, kamusKoordinat)
+
+        # Menampilkan grafik dengan memanggil fungsi membuatGraph dari modul Visualizer
+        membuatGraph(start, goal, shortPath, visited, kamusBeban, kamusKoordinat)
+
+        # Menampilkan hasil jalur terpendek dan node yang dikunjungi di GUI
         shortpath_label.config(text=f"Shortest Path: {' -> '.join(shortPath)}")
         visited_label.config(text=f"Visited Nodes: {', '.join('({0}, {1})'.format(*row) for row in visited)}")
     except Exception as e:
+        # Menampilkan pesan error jika terjadi kesalahan saat proses pencarian jalur terpendek
         shortpath_label.config(text=f"Error: Periksa penulisan Start, goal dan file")
         visited_label.config(text=f"")
 
-    # Update label untuk menampilkan jalur terpendek
 
 # Inisiasi
 master = tk.Tk()
@@ -81,8 +89,9 @@ ucs_button.place(x=320, y=200)
 
 
 # Tombol A*
-astar_button = tk.Button(master, text="A*", width=20,bg="pink")
+astar_button = tk.Button(master, text="A*", width=20,bg="pink", command=showASTAR_graph)
 astar_button.place(x=480, y=200)
+
 
 # Label start
 start_label = tk.Label(master, text="Start Node", font=("Arial", 12), bg="#f0f0f0")
