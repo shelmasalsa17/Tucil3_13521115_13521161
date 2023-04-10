@@ -7,11 +7,10 @@ def eucleudianDistance(nodeAwal, nodeAkhir, coordinateDictionary):
     + (coordinateDictionary[nodeAwal]["long"] - coordinateDictionary[nodeAkhir]["long"]) ** 2) ** (0.5), 3)
     return distance
 
-def makeHeuristicDict(goal):
-    loadDictionary = readFile(namaFile)
+def makeHeuristicDict(goal, loadDictionary):
     heuristicValue = dict()
     for nodes in loadDictionary:
-        heuristicValue[nodes] = eucleudianDistance(nodes, goal)
+        heuristicValue[nodes] = eucleudianDistance(nodes, goal,loadDictionary)
     return heuristicValue
 
 def readFile(namaFile):
@@ -20,8 +19,7 @@ def readFile(namaFile):
         coordinate = defaultdict(dict)
         weightDictionary = defaultdict(dict)
         # Baca File
-        dir = dirname(dirname(abspath(__file__)))
-        lokasiFile = os.path.join(dir, 'test\\' + namaFile + '.txt')
+        lokasiFile = namaFile
         
         with open(lokasiFile, "r") as f:
             # Mendapatkan list Seluruh Simpul 
@@ -46,7 +44,7 @@ def readFile(namaFile):
                     if(mat[i][j] == 1):
                         weightDictionary[listOfSimpul[i]][listOfSimpul[j]] = eucleudianDistance(listOfSimpul[i], listOfSimpul[j], coordinate)
 
-        return weightDictionary
+        return weightDictionary, coordinate
 
     except FileNotFoundError:
         print("File tidak ditemukan. Silakan periksa kembali nama file yang dimasukkan.")

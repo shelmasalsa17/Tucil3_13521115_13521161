@@ -41,7 +41,7 @@ def UCS(loadDictionary, start, goal):
                     shortPath.append(check)
                     lastPath = check
         shortPath.reverse()
-        return shortPath
+        return shortPath, visited
         
     except ValueError as e:
         print("Error: " + str(e))
@@ -52,10 +52,10 @@ def UCS(loadDictionary, start, goal):
     
             
 #main UCS 
-namaFile = str(input("Nama File tanpa ekstensi: "))
-test = readFile(namaFile)          
-print(test)
-start = str(input("start: "))
-end = str(input("end: "))
-shortPath = UCS(test,start,end)
-print(shortPath)
+#namaFile = str(input("Nama File tanpa ekstensi: "))
+#test = readFile(namaFile)          
+#print(test)
+#start = str(input("start: "))
+#end = str(input("end: "))
+#shortPath = UCS(test,start,end)
+#print(shortPath)
