@@ -7,11 +7,6 @@ def eucleudianDistance(nodeAwal, nodeAkhir, coordinateDictionary):
     + (coordinateDictionary[nodeAwal]["long"] - coordinateDictionary[nodeAkhir]["long"]) ** 2) ** (0.5), 3)
     return distance
 
-def makeHeuristicDict(goal, loadDictionary):
-    heuristicValue = dict()
-    for nodes in loadDictionary:
-        heuristicValue[nodes] = eucleudianDistance(nodes, goal,loadDictionary)
-    return heuristicValue
 
 def readFile(namaFile):
     try:

@@ -1,5 +1,11 @@
 from helper import *
 
+def makeHeuristicDict(goal, loadDictionary):
+    heuristicValue = dict()
+    for nodes in loadDictionary:
+        heuristicValue[nodes] = eucleudianDistance(nodes, goal,coordinateDictionary)
+    return heuristicValue
+
 #Pencarian dengan algoritma A*
 def A_star(loadDictionary, start, goal):
     # inisialisasi variabel
@@ -40,14 +46,15 @@ def A_star(loadDictionary, start, goal):
                     shortPath.append(check)
                     lastPath = check
         shortPath.reverse()
-        return shortPath
-    
-            
-#main A* 
-namaFile = str(input("Nama File tanpa ekstensi: "))
-test = readFile(namaFile)          
+        return shortPath, visited
+
+
+#main ASTAR
+#namaFile = str(input("Nama File tanpa ekstensi: "))
+test = readFile("test/itb.txt")          
 print(test)
 start = str(input("start: "))
 end = str(input("end: "))
 shortPath = A_star(test,start,end)
 print(shortPath)
+

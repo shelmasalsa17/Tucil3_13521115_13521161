@@ -4,6 +4,8 @@ import networkx
 import matplotlib.pyplot as plt
 from Visualizer import *
 from helper import *
+from helperAstar import *
+from AStar import *
 from pencarian import *
 
 kamusBeban = {}
@@ -31,6 +33,15 @@ def show_graph():
     goal = goal_entry.get()
     try:
         shortPath, visited = UCS(kamusBeban, start, goal)
+        membuatGraph(start, goal, shortPath, visited,kamusBeban, kamusKoordinat)
+        shortpath_label.config(text=f"Shortest Path: {' -> '.join(shortPath)}")
+        visited_label.config(text=f"Visited Nodes: {', '.join('({0}, {1})'.format(*row) for row in visited)}")
+    except Exception as e:
+        shortpath_label.config(text=f"Error: Periksa penulisan Start, goal dan file")
+        visited_label.config(text=f"")
+    
+    try:
+        shortPath, visited = A_star(kamusBeban, start, goal)
         membuatGraph(start, goal, shortPath, visited,kamusBeban, kamusKoordinat)
         shortpath_label.config(text=f"Shortest Path: {' -> '.join(shortPath)}")
         visited_label.config(text=f"Visited Nodes: {', '.join('({0}, {1})'.format(*row) for row in visited)}")
