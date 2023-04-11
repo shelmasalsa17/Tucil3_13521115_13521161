@@ -67,7 +67,7 @@ Algoritma UCS (*Uniform cost search*) dan A* (atau *A star*) dapat digunakan unt
 2. Masukkan *Start Node* yaitu tempat awal sesuai yang ada di file terpilih dan *Goal Node* yaitu tempat yang akan dikunjungi. 
 3. Tekan tombol *UCS* atau A* pada program.
 4. Tunggu hingga program berhasil menemukan jawaban dari *UCS* atau A*.
-5. Kemudian, program akan menunjukkan *shortest path* yang dibutuhkan untuk mendapatkan solusi.
+5. Kemudian, program akan menunjukkan *Shortest Path* yang menunjukkan simpul yang dikunjungi untuk mendapatkan lintasan terpendek dan *Visited Nodes* yang menunjukkan simpul mana saja yang telah dikunjungi.
 
 ## Authors
 
