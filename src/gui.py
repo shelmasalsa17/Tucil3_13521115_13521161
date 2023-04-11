@@ -78,9 +78,9 @@ canvas.create_image(0, 0, anchor=tk.NW, image=bg_image)
 # Membuat tombol submit
 submit_button = tk.Button(master, text="Pilih file", command=open_file_dialog, width=40)
 submit_button.place(x=20, y=200)
-shortpath_label = tk.Label(master, text="", font=("Arial", 12), bg="#f0f0f0", width=80,height=5)
+shortpath_label = tk.Label(master, text="", font=("Arial", 8), bg="#f0f0f0", width=120, height=5, wraplength=600)
 shortpath_label.place(x=20, y=285)
-visited_label = tk.Label(master, text="", font=("Arial", 8), bg="#f0f0f0", width=120, height=8)
+visited_label = tk.Label(master, text="", font=("Arial", 8), bg="#f0f0f0", width=120, height=8, wraplength=600)
 visited_label.place(x=20, y=400)
 # Label untuk menampilkan node yang dikunjungi
 # Tombol UCS
