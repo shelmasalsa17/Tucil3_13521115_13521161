@@ -54,7 +54,7 @@ Algoritma UCS (*Uniform cost search*) dan A* (atau *A star*) dapat digunakan unt
 
 ## Cara Menyiapkan *Environment*
 1. Pastikan Python versi 3.8.5 atau lebih baru sudah terpasang pada komputer (Anda dapat mengecek versi Python dengan menjalankan *command* `py --version` pada *command prompt*).
-2. Lakukan instalasi semua *library* yang digunakan pada program. Anda dapat menginstalasi seluruh *library* yang digunakan pada program ini dengan menjalankan *command* `pip install -r requirements.txt` pada *command prompt*.
+2. Lakukan instalasi semua *library* yang digunakan pada program.
 3. Jika seluruh *library* berhasil diinstalasi, maka akan terdapat pemberitahuan pada *command prompt*.
 
 ## Cara Menjalankan Program
