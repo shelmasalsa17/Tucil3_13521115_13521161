@@ -64,9 +64,10 @@ Algoritma UCS (*Uniform cost search*) dan A* (atau *A star*) dapat digunakan unt
 
 ## Cara Menggunakan Program
 1. *Upload* file `.txt` sesuai dengan format yang terdapat pada folder `test`.
-2. Tekan tombol *UCS* atau A* pada program.
-3. Tunggu hingga program berhasil menemukan jawaban dari *UCS* atau A*.
-4. Kemudian, program akan menunjukkan *shortest path* yang dibutuhkan untuk mendapatkan solusi.
+2. Masukkan *Start Node* yaitu tempat awal sesuai yang ada di file terpilih dan *Goal Node* yaitu tempat yang akan dikunjungi. 
+3. Tekan tombol *UCS* atau A* pada program.
+4. Tunggu hingga program berhasil menemukan jawaban dari *UCS* atau A*.
+5. Kemudian, program akan menunjukkan *shortest path* yang dibutuhkan untuk mendapatkan solusi.
 
 ## Authors
 
