@@ -50,9 +50,3 @@ def readFile(namaFile):
     except FileNotFoundError:
         print("File tidak ditemukan. Silakan periksa kembali nama file yang dimasukkan.")
         return None
-
-
-#TesFile
-#namaFile = str(input("Nama File tanpa ekstensi: "))
-#test = readFile(namaFile)          
-#print(test)

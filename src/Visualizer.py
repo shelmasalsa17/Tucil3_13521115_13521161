@@ -31,11 +31,3 @@ def membuatGraph(start, goal, alur_terpendek, visited, kamusBeban, kamusKoordina
         plt.show()
     except Exception as e:
         print(f"Terjadi kesalahan: {e}")
-
-# Contoh penggunaan
-#namaFile = str(input("Nama File tanpa ekstensi: "))
-#test, kamus = readFile(namaFile)       
-#start = str(input("start: "))
-#end = str(input("end: "))
-#shortPath, visited = UCS(test, start, end)
-#membuatGraph(start, end, shortPath, visited, test, kamus)

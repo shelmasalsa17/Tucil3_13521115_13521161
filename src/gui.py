@@ -11,6 +11,7 @@ kamusBeban = {}
 kamusKoordinat = {}
 visited_nodes = []
 shortPath = []
+
 # Fungsi untuk membuka jendela dialog dan membaca file
 def open_file_dialog():
     # Membuka jendela dialog untuk memilih file
@@ -26,8 +27,9 @@ def open_file_dialog():
         goal_entry.delete(0, tk.END)
 
 
-# Membuat fungsi untuk menampilkan grafik di GUI
+# Fungsi untuk menampilkan grafik di GUI
 def show_graph():
+    global shortPath
     start = start_entry.get()
     goal = goal_entry.get()
     try:
@@ -39,8 +41,9 @@ def show_graph():
         shortpath_label.config(text=f"Error: Periksa penulisan Start, goal dan file")
         visited_label.config(text=f"")
 
-    # Update label untuk menampilkan jalur terpendek
+# Update label untuk menampilkan jalur terpendek
 def showASTAR_graph():
+    global shortPath
     start = start_entry.get()
     goal = goal_entry.get()
     try:
@@ -53,10 +56,26 @@ def showASTAR_graph():
         # Menampilkan hasil jalur terpendek dan node yang dikunjungi di GUI
         shortpath_label.config(text=f"Shortest Path: {' -> '.join(shortPath)}")
         visited_label.config(text=f"Visited Nodes: {', '.join('({0}, {1})'.format(*row) for row in visited)}")
+        
     except Exception as e:
         # Menampilkan pesan error jika terjadi kesalahan saat proses pencarian jalur terpendek
         shortpath_label.config(text=f"Error: Periksa penulisan Start, goal dan file")
         visited_label.config(text=f"")
+
+# Fungsi untuk menghitung distance
+def countDistance():
+    distance_sum = 0
+    for i in range(len(shortPath) - 1):
+        distance_sum += kamusBeban[shortPath[i]][shortPath[i + 1]]
+    return distance_sum
+
+# Fungsi untuk menampilkan distance sum
+def show_distance_sum():
+    try:
+        distance_sum = countDistance()
+        distance_sum_label.config(text=f"{distance_sum}")
+    except Exception as e:
+        distance_sum_label.config(text=f"Error: {e}")
 
 
 # Inisiasi
@@ -82,11 +101,11 @@ shortpath_label = tk.Label(master, text="", font=("Arial", 8), bg="#f0f0f0", wid
 shortpath_label.place(x=20, y=285)
 visited_label = tk.Label(master, text="", font=("Arial", 8), bg="#f0f0f0", width=120, height=8, wraplength=600)
 visited_label.place(x=20, y=400)
+
 # Label untuk menampilkan node yang dikunjungi
 # Tombol UCS
 ucs_button = tk.Button(master, text="UCS", width=20,bg="pink", command=show_graph)
 ucs_button.place(x=320, y=200)
-
 
 # Tombol A*
 astar_button = tk.Button(master, text="A*", width=20,bg="pink", command=showASTAR_graph)
@@ -108,6 +127,14 @@ goal_label.place(x=320, y=230)
 # Field goal
 goal_entry = tk.Entry(master, font=("Arial", 12))
 goal_entry.place(x=320, y=255, width=200)
+
+# Label untuk menampilkan distance sum
+distance_sum_label = tk.Label(master, text="", font=("Arial", 12), bg="#f0f0f0", width=80)
+distance_sum_label.place(x=20, y=560)
+
+# Tombol untuk menampilkan distance sum
+distance_sum_button = tk.Button(master, text="Distance Sum", width=20, bg="pink", command=show_distance_sum)
+distance_sum_button.place(x=20, y=530)
 
 # Menjalankan event loop
 tk.mainloop()

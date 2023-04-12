@@ -4,7 +4,6 @@ def Astar(start, goal, kamusBeban, kamusKordinat):
     try:
         kamusHeuristic = buatkamusHeuristic(goal, kamusKordinat, kamusBeban)
         cost = {start: 0}
-
         # OPEN SET
         opened = []
         # CLOSE SET
@@ -49,13 +48,3 @@ def buatkamusHeuristic(goal, kamusKordinat, kamusBeban):
     for nodes in kamusBeban:
         kamusHeuristic[nodes] = eucleudianDistance(nodes, goal, kamusKordinat)
     return kamusHeuristic
-
-#main ASTAR
-#namaFile = str(input("Nama File tanpa ekstensi: "))
-#kamusBeban, kamusKordinat = readFile("test/itb.txt")          
-#print(kamusBeban)
-#start = str(input("start: "))
-#end = str(input("end: "))
-#shortPath, visited = Astar(start,end, kamusBeban, kamusKordinat)
-#print(shortPath)
-
