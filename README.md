@@ -67,8 +67,8 @@ Algoritma UCS (*Uniform cost search*) dan A* (atau *A star*) dapat digunakan unt
 ## Cara Menjalankan Program
 1. Pastikan sudah menyiapkan *environment* program serta mesin eksekusi terhubung dengan internet.
 2. Jalankan program `gui.py` dengan menjalankan perintah `py gui.py` pada *command prompt* pada folder `src`.
-3. Untuk mempermudah bisa membuka file main.exe di folder bin dan klik file tersebut.
-3. Jika berhasil dijalankan, maka akan terdapat *window* Python pada komputer.
+3. Untuk mempermudah bisa membuka file .exe di folder bin dan klik file tersebut.
+4. Jika berhasil dijalankan, maka akan terdapat *window* Python pada komputer.
 
 ## Cara Menggunakan Program
 1. *Upload* file `.txt` sesuai dengan format yang terdapat pada folder `test`.
