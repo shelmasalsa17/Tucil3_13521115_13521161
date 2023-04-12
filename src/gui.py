@@ -11,7 +11,6 @@ kamusBeban = {}
 kamusKoordinat = {}
 visited_nodes = []
 shortPath = []
-
 # Fungsi untuk membuka jendela dialog dan membaca file
 def open_file_dialog():
     # Membuka jendela dialog untuk memilih file
@@ -27,7 +26,7 @@ def open_file_dialog():
         goal_entry.delete(0, tk.END)
 
 
-# Fungsi untuk menampilkan grafik di GUI
+# Membuat fungsi untuk menampilkan grafik di GUI
 def show_graph():
     global shortPath
     start = start_entry.get()
@@ -41,7 +40,7 @@ def show_graph():
         shortpath_label.config(text=f"Error: Periksa penulisan Start, goal dan file")
         visited_label.config(text=f"")
 
-# Update label untuk menampilkan jalur terpendek
+    # Update label untuk menampilkan jalur terpendek
 def showASTAR_graph():
     global shortPath
     start = start_entry.get()
@@ -56,14 +55,13 @@ def showASTAR_graph():
         # Menampilkan hasil jalur terpendek dan node yang dikunjungi di GUI
         shortpath_label.config(text=f"Shortest Path: {' -> '.join(shortPath)}")
         visited_label.config(text=f"Visited Nodes: {', '.join('({0}, {1})'.format(*row) for row in visited)}")
-        
     except Exception as e:
         # Menampilkan pesan error jika terjadi kesalahan saat proses pencarian jalur terpendek
         shortpath_label.config(text=f"Error: Periksa penulisan Start, goal dan file")
         visited_label.config(text=f"")
 
-# Fungsi untuk menghitung distance
-def countDistance():
+
+def disstance_sum():
     distance_sum = 0
     for i in range(len(shortPath) - 1):
         distance_sum += kamusBeban[shortPath[i]][shortPath[i + 1]]
@@ -72,7 +70,7 @@ def countDistance():
 # Fungsi untuk menampilkan distance sum
 def show_distance_sum():
     try:
-        distance_sum = countDistance()
+        distance_sum = disstance_sum()
         distance_sum_label.config(text=f"{distance_sum}")
     except Exception as e:
         distance_sum_label.config(text=f"Error: {e}")
