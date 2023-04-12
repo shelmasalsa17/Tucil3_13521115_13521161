@@ -18,7 +18,8 @@ Algoritma UCS (*Uniform cost search*) dan A* (atau *A star*) dapat digunakan unt
 │   README.md
 │   
 ├───bin
-│   
+│       run.bat
+│ 
 ├───doc
 │       Tucil3_13521115_13521161.pdf
 │  
@@ -45,12 +46,18 @@ Algoritma UCS (*Uniform cost search*) dan A* (atau *A star*) dapat digunakan unt
 └───test
         alun2.txt
         buahbatu.txt
+        garut.txt
         itb.txt
+        klaten.txt
 ```
 
 ## Requirement Program
 * Python versi 3.8.5 atau lebih baru. Pastikan pula terdapat package PyPi (PIP) pada Python Anda.
 * NumPy versi 1.22.3 atau lebih baru.
+* Tkinter versi 0.1.0 atau lebih baru.
+* Networkx versi 3.1 atau lebih baru.
+* Matplotlib versi 3.7.1 atau lebih baru.
+
 
 ## Cara Menyiapkan *Environment*
 1. Pastikan Python versi 3.8.5 atau lebih baru sudah terpasang pada komputer (Anda dapat mengecek versi Python dengan menjalankan *command* `py --version` pada *command prompt*).
@@ -60,6 +67,7 @@ Algoritma UCS (*Uniform cost search*) dan A* (atau *A star*) dapat digunakan unt
 ## Cara Menjalankan Program
 1. Pastikan sudah menyiapkan *environment* program serta mesin eksekusi terhubung dengan internet.
 2. Jalankan program `gui.py` dengan menjalankan perintah `py gui.py` pada *command prompt* pada folder `src`.
+3. Untuk mempermudah bisa membuka file main.exe di folder bin dan klik file tersebut.
 3. Jika berhasil dijalankan, maka akan terdapat *window* Python pada komputer.
 
 ## Cara Menggunakan Program
